@@ -102,13 +102,14 @@ export default function App() {
               We are a grassroots group of conservative women and families dedicated to defending 
               faith, family, and freedom in our community.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
                 onClick={() => setActiveTab('join')}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 rounded-lg shadow-lg"
+                className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white px-14 py-6 text-2xl font-bold rounded-xl shadow-2xl transform hover:scale-110 transition-all duration-300 animate-pulse"
               >
-                Join Our Club
-                <ChevronRight className="h-4 w-4 ml-2" />
+                <Flag className="h-7 w-7 mr-3" />
+                Join Our Club Today
+                <ChevronRight className="h-7 w-7 ml-3" />
               </Button>
               <Button 
                 variant="outline" 
