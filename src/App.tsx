@@ -304,7 +304,7 @@ export default function App() {
                     <Badge variant="secondary" className={`mb-2 ${index % 2 === 0 ? 'bg-blue-100 text-blue-700' : 'bg-red-100 text-red-700'} hover:bg-opacity-80`}>
                       {member.title}
                     </Badge>
-                    <p className="text-sm text-neutral-500">{member.since}</p>
+                    <p className="text-sm text-neutral-500"></p>
                   </div>
                 </CardContent>
               </Card>
@@ -365,7 +365,7 @@ export default function App() {
                 Join us in making a difference in our community. We need dedicated volunteers 
                 to help with events, outreach, and supporting conservative candidates.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
                   <Flag className="h-5 w-5 text-blue-600" />
                   <span className="text-neutral-700">Make a meaningful impact</span>
@@ -377,6 +377,18 @@ export default function App() {
                 <div className="flex items-center gap-3">
                   <Star className="h-5 w-5 text-blue-600" />
                   <span className="text-neutral-700">Advance conservative values</span>
+                </div>
+              </div>
+              <div className="bg-gradient-to-r from-red-600 to-blue-600 p-1 rounded-xl inline-block">
+                <div className="p-4 rounded-lg">
+                  <Button 
+                    className="bg-red-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                    onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSf1Q_f0LoCPy2Ag-eNGv8GDwzWw0HsTFvlpfF-VI1KS2ceNKA/viewform', '_blank')}
+                  >
+                    <ExternalLink className="h-5 w-5 mr-2" />
+                    Start Volunteering
+                    <ChevronRight className="h-5 w-5 ml-2" />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -649,6 +661,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      
       {/* Header */}
       <header className="border-b border-neutral-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6">
@@ -697,6 +710,8 @@ export default function App() {
                 onClick={() => setActiveTab('join')}
                 className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white px-4 py-2 rounded-md shadow-md"
               >
+                
+                <Flag className="h-5 w-5 mr-2" />
                 Join Now
               </Button>
             </div>
