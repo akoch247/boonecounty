@@ -79,7 +79,6 @@ export default function App() {
 
   const renderHome = () => (
     <div className="space-y-16">
-      {/* Hero Section */}
       <section className="relative">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neutral-300 to-transparent"></div>
         <div className="relative bg-gradient-to-b from-neutral-50 to-white py-24">
