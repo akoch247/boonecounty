@@ -3,10 +3,11 @@ import { Button } from './components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card';
 import { Badge } from './components/ui/badge';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
-import { MapPin, Clock, Users, Calendar, ExternalLink, Building2, Phone, Mail, ChevronRight, Flag, Star, Shield } from 'lucide-react';
+import { MapPin, Clock, Users, Calendar, ExternalLink, Building2, Phone, Mail, ChevronRight, Flag, Star, Shield, Menu, X } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigationItems = [
     { id: 'home', label: 'Home' },
@@ -678,6 +679,20 @@ export default function App() {
               ))}
             </nav>
 
+            <div className="md:hidden">
+              <Button 
+                variant="ghost"
+                size="icon"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6 text-neutral-800" />
+                ) : (
+                  <Menu className="h-6 w-6 text-neutral-800" />
+                )}
+              </Button>
+            </div>
+
             <div className="flex items-center gap-3">
               <Button 
                 onClick={() => setActiveTab('join')}
@@ -688,6 +703,30 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-neutral-200 bg-white">
+            <nav className="flex flex-col px-4 py-2">
+              {navigationItems.map((item) => (
+                <Button 
+                  key={item.id}
+                  variant="ghost"
+                  onClick={() => {
+                    setActiveTab(item.id);
+                    setMobileMenuOpen(false);
+                  }}
+                  className= {`w-full text-left px-4 py-2 rounded-md ${
+                    activeTab === item.id
+                      ? "bg-neutral-100 text-neutral-900"
+                      : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50"
+                  }`}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}
