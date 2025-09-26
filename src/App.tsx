@@ -21,7 +21,6 @@ export default function App() {
   const members = [
     { name: 'Valerie Swack', title: 'President' },
     { name: 'Anna Schappaugh', title: 'Vice President' },
-    { name: 'Jennifer Williams', title: 'Secretary' },
     { name: 'Sandy Jasionowski', title: 'Treasurer'},
     { name: 'Diana Freeman', title: 'Secretary'},
     { name: 'Jenny Beyer', title: 'Parliamentarian'},
