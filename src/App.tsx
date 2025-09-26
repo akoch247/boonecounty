@@ -34,25 +34,25 @@ export default function App() {
 
   const eventImages = [
     {
-      url: "https://images.unsplash.com/photo-1728655947843-fdbf6fdfbe51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb2xpdGljYWwlMjBtZWV0aW5nJTIwd29tZW58ZW58MXx8fHwxNzU4ODM5NzA5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      src: "/community.jpg",
       title: "Monthly Meeting",
       date: "October 2024",
       description: "Guest speaker on constitutional rights"
     },
     {
-      url: "https://images.unsplash.com/photo-1758610840977-8ee55513281c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBnYXRoZXJpbmclMjBldmVudHxlbnwxfHx8fDE3NTg4Mzk3MDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      src: "/barbecue.jpeg",
       title: "Community BBQ",
       date: "September 2024",
       description: "Annual fundraising event"
     },
     {
-      url: "https://images.unsplash.com/photo-1585942740847-55be8f2f7352?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zZXJ2YXRpdmUlMjByYWxseXxlbnwxfHx8fDE3NTg4Mzk3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      src: "/regina.jpg",
       title: "Rally for Freedom",
       date: "August 2024",
       description: "Supporting conservative candidates"
     },
     {
-      url: "https://images.unsplash.com/photo-1681949222860-9cb3b0329878?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGxlYWRlcnNoaXAlMjBtZWV0aW5nfGVufDF8fHx8MTc1ODgzOTcxMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      src: "/becky.jpg",
       title: "Leadership Workshop",
       date: "July 2024",
       description: "Empowering conservative women leaders"
@@ -195,7 +195,7 @@ export default function App() {
             <div className="lg:order-first">
               <div className="relative">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1758620140601-791f2761514a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb3Zlcm5tZW50JTIwYnVpbGRpbmclMjBwYXRyaW90aWN8ZW58MXx8fHwxNzU4ODQxMTM0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  src="/community2.jpeg"
                   alt="Government building"
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
@@ -260,7 +260,7 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1757353614837-d8085c4fdbd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMGxlYWRlcnNoaXAlMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzU4ODQxMTM3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src="/leadership.jpeg"
                 alt="Women in leadership"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
               />
@@ -304,7 +304,7 @@ export default function App() {
                     <Badge variant="secondary" className={`mb-2 ${index % 2 === 0 ? 'bg-blue-100 text-blue-700' : 'bg-red-100 text-red-700'} hover:bg-opacity-80`}>
                       {member.title}
                     </Badge>
-                    <p className="text-sm text-neutral-500">Member since {member.since}</p>
+                    <p className="text-sm text-neutral-500">{member.since}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -331,7 +331,7 @@ export default function App() {
               <Card key={index} className="border-neutral-200 overflow-hidden hover:shadow-lg transition-all duration-300">
                 <div className="aspect-video relative">
                   <ImageWithFallback
-                    src={event.url}
+                    src={event.src}
                     alt={event.title}
                     className="w-full h-full object-cover"
                   />
@@ -383,7 +383,7 @@ export default function App() {
             <div className="lg:order-first">
               <div className="relative">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1758599668125-e154250f24bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjB2b2x1bnRlZXIlMjBoZWxwaW5nfGVufDF8fHx8MTc1ODg0MTE0MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  src="/pamela.jpeg"
                   alt="Community volunteers"
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
@@ -430,7 +430,7 @@ export default function App() {
                 </p>
                 <Button 
                   className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-3 rounded-lg shadow-lg"
-                  onClick={() => window.open('https://forms.google.com/volunteer-form', '_blank')}
+                  onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSf1Q_f0LoCPy2Ag-eNGv8GDwzWw0HsTFvlpfF-VI1KS2ceNKA/viewform', '_blank')}
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
                   Volunteer Today
@@ -486,13 +486,13 @@ export default function App() {
               <Card className="border-neutral-200 bg-neutral-900 text-white">
                 <CardContent className="p-8 text-center">
                   <h3 className="text-xl mb-2">Annual Membership</h3>
-                  <div className="text-4xl mb-2">$35</div>
+                  <div className="text-4xl mb-2">$55</div>
                   <p className="text-neutral-300 text-sm mb-6">
                     Includes local, state, and national federation memberships
                   </p>
                   <Button 
                     className="bg-white text-neutral-900 hover:bg-neutral-100 w-full rounded-lg"
-                    onClick={() => window.open('https://forms.google.com/membership-form', '_blank')}
+                    onClick={() => window.open('https://boone-county-republican-womens-club.square.site/', '_blank')}
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Join Now
