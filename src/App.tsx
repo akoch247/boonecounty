@@ -379,13 +379,13 @@ export default function App() {
                   <span className="text-neutral-700">Advance conservative values</span>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-red-600 to-blue-600 p-1 rounded-xl inline-block">
-                <div className="p-4 rounded-lg">
+              <div className="">
+                <div className="p-5 rounded-lg">
                   <Button 
-                    className="bg-red-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="h-10 bg-red-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
                     onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSf1Q_f0LoCPy2Ag-eNGv8GDwzWw0HsTFvlpfF-VI1KS2ceNKA/viewform', '_blank')}
                   >
-                    <ExternalLink className="h-5 w-5 mr-2" />
+                    <ExternalLink className="h-5 w-4 mr-2" />
                     Start Volunteering
                     <ChevronRight className="h-5 w-5 ml-2" />
                   </Button>
