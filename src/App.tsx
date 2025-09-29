@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card';
 import { Badge } from './components/ui/badge';
@@ -85,19 +86,19 @@ export default function App() {
           <div className="absolute top-8 right-8 opacity-20">
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1533875595808-e224f806d2de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbWVyaWNhbiUyMGZsYWclMjB3YXZpbmd8ZW58MXx8fHwxNzU4ODQxMTMxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="American Flag"
+              alt="Boone County Republican Women's Event American Flag"
               className="w-32 h-24 object-cover rounded-lg"
             />
           </div>
           <div className="max-w-4xl mx-auto text-center px-6">
             <div className="inline-flex items-center gap-2 bg-white border border-blue-200 rounded-full px-4 py-2 mb-8 shadow-sm">
               <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              <span className="text-sm text-neutral-700">Boone County Republican Women's Club</span>
+              <h1 className="text-sm text-neutral-700">Boone County Republican Women's Club</h1>
             </div>
-            <h1 className="text-5xl md:text-6xl tracking-tight text-neutral-900 mb-6">
+            <h2 className="text-5xl md:text-6xl tracking-tight text-neutral-900 mb-6">
               Preserving Our<br />
-              <span className="bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">Constitutional Values</span>
-            </h1>
+              <h2 className="bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">Constitutional Values</h2>
+            </h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto mb-12 leading-relaxed">
               We are a grassroots group of conservative women and families dedicated to defending 
               faith, family, and freedom in our community.
@@ -196,7 +197,7 @@ export default function App() {
               <div className="relative">
                 <ImageWithFallback
                   src="/community2.jpeg"
-                  alt="Government building"
+                  alt="Boone County Republican Women's Club Community Event"
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-red-600/10 rounded-xl"></div>
@@ -261,7 +262,7 @@ export default function App() {
             <div className="relative">
               <ImageWithFallback
                 src="/leadership.jpeg"
-                alt="Women in leadership"
+                alt="Boone County Women's Club Leadership Event"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-red-600/10 rounded-xl"></div>
@@ -332,7 +333,7 @@ export default function App() {
                 <div className="aspect-video relative">
                   <ImageWithFallback
                     src={event.src}
-                    alt={event.title}
+                    alt="Boone County Republican Women's Events"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -396,7 +397,7 @@ export default function App() {
               <div className="relative">
                 <ImageWithFallback
                   src="/pamela.jpeg"
-                  alt="Community volunteers"
+                  alt="Boone County Republican Women's Event Member"
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-red-600/10 to-blue-600/10 rounded-xl"></div>
@@ -546,7 +547,7 @@ export default function App() {
             <div className="relative">
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1753799515528-d2873549b442?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zdGl0dXRpb24lMjBkb2N1bWVudHxlbnwxfHx8fDE3NTg4NDExNDN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Constitution document"
+                alt="Boone County Republican Women's Event Resourses"
                 className="w-full h-80 object-cover rounded-xl shadow-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-red-600/10 rounded-xl"></div>
