@@ -3,7 +3,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { MapPin, Clock, Users, Calendar, Flag, Star, ChevronRight, Award, Heart } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 
 export default function HomePage() {
@@ -119,7 +119,7 @@ export default function HomePage() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button 
-                  onClick={() => setActiveTab('join')}
+                  onClick={() => window.open('https://boone-county-republican-womens-club.square.site/', '_blank')}
                   className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white px-8 py-6 text-2xl rounded-xl shadow-2xl transition-all duration-300 animate-pulse relative overflow-hidden"
                 >
                   <motion.div
@@ -144,13 +144,15 @@ export default function HomePage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button 
-                  variant="outline" 
-                  onClick={() => setActiveTab('events')}
-                  className="border-red-300 text-red-700 hover:bg-red-50 px-8 py-6 rounded-lg"
-                >
-                  View Events
-                </Button>
+                <Link to="/events">
+                  <Button 
+                    variant="outline" 
+                    onClick={() => setActiveTab('events')}
+                    className="border-red-300 text-red-700 hover:bg-red-50 px-8 py-6 rounded-lg"
+                  >
+                    View Events
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
           </div>
