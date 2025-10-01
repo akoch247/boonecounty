@@ -6,7 +6,13 @@ import { Badge } from 'lucide-react';
 export default function EventsPage() {
     const eventImages = [
         {
-          src: "/community.jpg",
+          src: "/charlie.jpg",
+          title: "Charlie Kirk Vigil",
+          date: "October 21st, 2025",
+          description: "Candlelight vigil honoring the life of Charlie Kirk"
+        },
+        {
+          src: "/monthly.jpg",
           title: "Monthly Meeting",
           date: "October 2024",
           description: "Guest speaker on constitutional rights"
@@ -18,7 +24,7 @@ export default function EventsPage() {
           description: "Annual fundraising event"
         },
         {
-          src: "/regina.jpg",
+          src: "/beckyrally.jpg",
           title: "Rally for Freedom",
           date: "August 2024",
           description: "Supporting conservative candidates"
@@ -29,6 +35,7 @@ export default function EventsPage() {
           date: "July 2024",
           description: "Empowering conservative women leaders"
         }
+        
       ];
       
     return (
