@@ -43,7 +43,7 @@ export default function Footer() {
           
           <div className="border-t border-neutral-200 mt-12 pt-8 text-center">
             <p className="text-sm text-neutral-500">
-              © 2024 Boone County Republican Women's Club. All rights reserved.
+              © 2025 Boone County Republican Women's Club. All rights reserved.
             </p>
           </div>
         </div>
