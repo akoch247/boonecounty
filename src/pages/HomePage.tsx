@@ -64,28 +64,6 @@ export default function HomePage() {
             />
           </motion.div>
 
-          {/* Animated Stars */}
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute opacity-10"
-              style={{
-                left: `${10 + i * 15}%`,
-                top: `${20 + (i % 2) * 40}%`,
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.2, 0.5, 0.2]
-              }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                delay: i * 0.5
-              }}
-            >
-              <Star className="h-6 w-6 text-blue-600" />
-            </motion.div>
-          ))}
 
           <div className="max-w-4xl mx-auto text-center px-6">
             <motion.div 
@@ -99,7 +77,7 @@ export default function HomePage() {
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               ></motion.div>
-              <span className="text-2xl text-neutral-700">Boone County Republican Women's Club</span>
+              <span className="text-lg text-neutral-700">Boone County Republican Women's Club</span>
             </motion.div>
 
             <motion.h1 
@@ -505,24 +483,6 @@ export default function HomePage() {
                   className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-red-600/10 rounded-2xl"
                   animate={{ opacity: [0.1, 0.3, 0.1] }}
                   transition={{ duration: 4, repeat: Infinity }}
-                />
-                
-                {/* Floating elements around the image */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-8 h-8 bg-blue-600 rounded-full opacity-60"
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                    y: [0, -10, 0]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
-                <motion.div
-                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-red-600 rounded-full opacity-60"
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    y: [0, 10, 0]
-                  }}
-                  transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
                 />
               </div>
             </motion.div>
