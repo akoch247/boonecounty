@@ -29,7 +29,7 @@ export default function HomePage() {
   };
 
   const [activeTab, setActiveTab] = useState('home');
-  const memberCount = useAnimatedCounter(450);
+  const memberCount = useAnimatedCounter(225);
   const yearsCount = useAnimatedCounter(6);
   const eventsCount = useAnimatedCounter(11);
 
@@ -99,7 +99,7 @@ export default function HomePage() {
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               ></motion.div>
-              <span className=" text-neutral-700">Boone County Republican Women's Club</span>
+              <span className="text-2xl text-neutral-700">Boone County Republican Women's Club</span>
             </motion.div>
 
             <motion.h1 
@@ -184,7 +184,7 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-10">
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 relative">
+        <div className="py-16 max-w-6xl mx-auto px-6 relative">
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0, y: 30 }}
@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* Animated Core Values */}
-      <section className="py-16 relative z-10 bg-gradient-to-b from-white/80 to-blue-50/60">
+      <section className="py-16 mx-16 relative z-10 bg-gradient-to-b from-white/80 to-blue-50/60">
         <div className="max-w-6xl mx-auto px-6">
           <motion.div 
             className="text-center mb-16"
@@ -255,7 +255,7 @@ export default function HomePage() {
           </motion.div>
           
           {/* Core Values Grid */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="mb-16 grid md:grid-cols-3 gap-6">
             {[
               { 
                 title: "Faith", 
@@ -365,7 +365,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Photo Gallery Section */}
+      {/* Photo Gallery Section Sliding Loop */}
       <section className="py-20 relative z-10 bg-gradient-to-br from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
@@ -380,8 +380,9 @@ export default function HomePage() {
               See how we're making a difference through our events, meetings, and community engagement.
             </p>
           </motion.div>
+          
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 mt-16">
             {[
               {
                 src: "/community3.jpg",
@@ -409,16 +410,20 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
               >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <ImageWithFallback
-                    src={item.src}
-                    alt={item.title}
-                    className="w-full h-64 object-cover"
-                  />
-                </motion.div>
+                <div className="w-full aspect-video">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-full h-full"
+                    >
+                      <ImageWithFallback
+                        src={item.src}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                  </motion.div>
+                </div>
+
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={{ opacity: 0 }}
@@ -439,7 +444,7 @@ export default function HomePage() {
       </section>
 
       {/* Animated Featured Section */}
-      <section className="mx-4 relative z-10 bg-gradient-to-r from-red-50/80 via-white/70 to-blue-50/80">
+      <section className="mx-5 py-16 relative z-10 bg-gradient-to-r from-red-50/80 via-white/70 to-blue-50/80">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -493,7 +498,7 @@ export default function HomePage() {
                   <ImageWithFallback
                     src="/community2.jpeg"
                     alt="Community Photo"
-                    className="w-full h-80 object-cover rounded-2xl shadow-2xl"
+                    className="w-full h-full object-cover rounded-xl shadow-2xl"
                   />
                 </motion.div>
                 <motion.div 
@@ -526,10 +531,10 @@ export default function HomePage() {
       </section>
 
       {/* Animated Meeting Information */}
-      <section className="py-16 mt-10 relative z-10 bg-gradient-to-br from-blue-50/80 to-red-50/60 overflow-hidden">
+      <section className="py-24 relative z-10 bg-gradient-to-br from-blue-50/80 to-red-50/60 overflow-hidden">
         {/* Animated background elements */}
         <motion.div
-          className="absolute top-10 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-xl"
+          className=" absolute top-10 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-xl"
           animate={{ 
             scale: [1, 1.2, 1],
             x: [0, 20, 0],
@@ -547,7 +552,7 @@ export default function HomePage() {
           transition={{ duration: 6, repeat: Infinity, delay: 2 }}
         />
 
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto py-3">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -555,15 +560,15 @@ export default function HomePage() {
             viewport={{ once: true }}
           >
             <Card className="border-blue-200 shadow-2xl bg-white/90 backdrop-blur overflow-hidden">
-              <CardContent className="p-10">
+              <CardContent className="p-3 mt-4">
                 <motion.div 
-                  className="text-center mb-10"
+                  className="text-center mt-4"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <div className="inline-flex items-center gap-3 mb-6">
+                  <div className="inline-flex items-center gap-3 mb-6 mt-3">
                     <motion.div
                       animate={{ rotate: [0, 10, 0] }}
                       transition={{ duration: 3, repeat: Infinity }}
@@ -578,10 +583,10 @@ export default function HomePage() {
                       <Flag className="h-8 w-8 text-red-600" />
                     </motion.div>
                   </div>
-                  <p className="text-neutral-600 text-xl">Join us for our regular gatherings</p>
+                  <p className="text-neutral-600 text-xl mb-3 py-3">Join us for our regular gatherings</p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-3 gap-10">
+                <div className=" grid md:grid-cols-3 gap-10">
                   {[
                     { icon: Calendar, color: "blue", title: "When", details: ["3rd Wednesday", "January - November"] },
                     { icon: MapPin, color: "red", title: "Where", details: ["Whitestown Municipal Complex", "6210 Veterans Dr, Whitestown, IN"] },
@@ -651,7 +656,7 @@ export default function HomePage() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <Button 
-                      onClick={() => setActiveTab('join')}
+                      onClick={() => window.open('https://boone-county-republican-womens-club.square.site/', '_blank')}
                       className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white px-10 py-4 text-lg rounded-xl shadow-xl transition-all duration-300 relative overflow-hidden"
                     >
                       <motion.div
