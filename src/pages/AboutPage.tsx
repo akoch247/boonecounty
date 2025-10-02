@@ -8,15 +8,15 @@ export default function AboutPage() {
     const members = [
         { name: 'Valerie Swack', title: 'President', image: "val.png"},
         { name: 'Anna Schappaugh', title: 'Vice President', image: "anna.png" },
-        { name: 'Sandy Jasionowski', title: 'Treasurer', image: ""},
-        { name: 'Diana Freeman', title: 'Secretary', image: ""},
-        { name: 'Jenny Beyer', title: 'Parliamentarian', image: ""},
-        { name: 'Yvonne Koch', title: 'Legislative Committee', image: ""},
-        { name: 'Sam Anders', title: 'Marketing Committee', image: ""},
-        { name: 'Cheryl Hancock', title: 'Membership Committee', image: ""},
-        { name: 'Regina Sharrow', title: 'Events', image: "/regina.jpg"},
-        { name: 'Anna Schappaugh', title: 'Campaign Activities', image: ""},
-        { name: 'Emily Myers', title: 'Correseponding Secretary', image: ""},
+        { name: 'Sandy Jasionowski', title: 'Treasurer', image: "/sandra.png"},
+        { name: 'Diana Freeman', title: 'Secretary', image: "/diane.png"},
+        { name: 'Jenny Beyer', title: 'Parliamentarian', image: "/americanflag.jpg"},
+        { name: 'Yvonne Koch', title: 'Legislative Committee', image: "yvonne.png"},
+        { name: 'Sam Anders', title: 'Marketing Committee', image: "americanflag.jpg"},
+        { name: 'Cheryl Hancock', title: 'Membership Committee', image: "/cheryl.jpg"},
+        { name: 'Regina Sharrow', title: 'Events', image: "/regina.jpeg"},
+        { name: 'Anna Schappaugh', title: 'Campaign Activities', image: "/anna.png"},
+        { name: 'Emily Myers', title: 'Correseponding Secretary', image: "/emilee.jpeg"},
       ];
     return (
         <div className="space-y-0 relative">
