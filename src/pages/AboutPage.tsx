@@ -6,8 +6,8 @@ import { motion } from 'motion/react';
 
 export default function AboutPage() {
     const members = [
-        { name: 'Valerie Swack', title: 'President', image: ""},
-        { name: 'Anna Schappaugh', title: 'Vice President', image: "" },
+        { name: 'Valerie Swack', title: 'President', image: "val.png"},
+        { name: 'Anna Schappaugh', title: 'Vice President', image: "anna.png" },
         { name: 'Sandy Jasionowski', title: 'Treasurer', image: ""},
         { name: 'Diana Freeman', title: 'Secretary', image: ""},
         { name: 'Jenny Beyer', title: 'Parliamentarian', image: ""},
