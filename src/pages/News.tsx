@@ -4,10 +4,54 @@ import { Badge, Calendar, ExternalLink, Flag, Mail, Shield, Star, Users } from "
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { motion } from 'motion/react';
-import MailchimpForm from "./MailChimp";
 
 
 export default function NewsPage() {
+    useEffect(() => {
+        // Load Mailchimp validation script
+        const script = document.createElement("script");
+        script.src = "//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js";
+        script.async = true;
+        document.body.appendChild(script);
+    
+        script.onload = () => {
+          window.fnames = ["EMAIL", "FNAME", "LNAME", "PHONE"];
+          window.ftypes = ["email", "text", "text", "phone"];
+          window.$mcj = window.jQuery?.noConflict(true);
+    
+          // ✅ Fix autofill issue
+          // 1️⃣ Re-dispatch input events on focus and form submit
+          const form = document.querySelector("#mc-embedded-subscribe-form");
+          const inputs = form?.querySelectorAll("input");
+    
+          const triggerInputEvent = (input) => {
+            const event = new Event("input", { bubbles: true });
+            input.dispatchEvent(event);
+          };
+    
+          // When user focuses the field after autofill
+          inputs?.forEach((input) => {
+            input.addEventListener("focus", () => triggerInputEvent(input));
+          });
+    
+          // When user submits form (autofill values may still be "invisible" to script)
+          form?.addEventListener("submit", () => {
+            inputs?.forEach((input) => triggerInputEvent(input));
+          });
+    
+          // As an extra safety net: run once after 1 second (covers instant autofill)
+          setTimeout(() => {
+            inputs?.forEach(triggerInputEvent);
+          }, 1000);
+        };
+    
+        return () => {
+          document.body.removeChild(script);
+        };
+      }, []);
+    
+  
+  
     const newsItems = [
         {
           title: "Upcoming Election Information",
@@ -75,7 +119,6 @@ export default function NewsPage() {
   
 
     return (
-        
         <div className="space-y-0 relative">
           {/* Subtle Background */}
           <div className="fixed inset-0 z-0">
@@ -255,12 +298,277 @@ export default function NewsPage() {
                   Get the latest updates on conservative issues, upcoming events, and important news delivered directly to your inbox.
                 </motion.p>
               </motion.div>
-                  <MailchimpForm />
-            
+    
+              {/* Form Container */}
+
+              <motion.div
+                className="bg-white rounded-xl p-8 shadow-2xl max-w-2xl mx-auto" initial={{ opacity: 0, y: 50, scale: 0.9 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.8, delay: 0.6 }} viewport={{ once: true }}>
+                  <div id="mc_embed_shell" className="flex justify-center py-10">
+                    <div
+                        id="mc_embed_signup"
+                        style={{
+                        background: "#fff",
+                        clear: "left",
+                        font: "14px Helvetica, Arial, sans-serif",
+                        width: "600px",
+                        borderRadius: "12px",
+                        padding: "20px",
+                        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                        }}
+                    >
+                    </div>
+                  </div>
+                  <form
+                    action="https://boonecountyrepublicanwomensclub.us5.list-manage.com/subscribe/post?u=a2bf7f2f663c11b56aae15ef7&amp;id=a9b0b0e5e3&amp;v_id=3613&amp;f_id=008271ebf0"
+                    method="post"
+                    id="mc-embedded-subscribe-form"
+                    name="mc-embedded-subscribe-form"
+                    className="validate"
+                    target="_blank"
+                    noValidate
+                    >
+                <div id="mc_embed_signup_scroll">
+                    <h2 className="text-2xl font-semibold mb-4">Stay Connected</h2>
+                </div>
+
+                <div className="mc-field-group mb-4">
+                    <label htmlFor="mce-EMAIL">
+                        Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        name="EMAIL"
+                        id="mce-EMAIL"
+                        required
+                        className="w-full border border-gray-300 rounded-md p-2 mt-1"
+                    />
+                    </div>
+
+                    <div className="mc-field-group mb-4">
+                        <label htmlFor="mce-FNAME">First Name</label>
+                        <input
+                            type="text"
+                            name="FNAME"
+                            id="mce-FNAME"
+                            className="w-full border border-gray-300 rounded-md p-2 mt-1"
+                        />
+                    </div>
+
+                    <div className="mc-field-group mb-4">
+                        <label htmlFor="mce-LNAME">Last Name</label>
+                        <input
+                            type="text"
+                            name="LNAME"
+                            id="mce-LNAME"
+                            className="w-full border border-gray-300 rounded-md p-2 mt-1"
+                        />
+                    </div>
+
+                    <div id="mergeRow-gdpr" className="mb-6">
+                        <label className="font-medium">Marketing Permissions</label>
+                        <p className="text-sm text-gray-600 mb-2">
+                            Please select all the ways you would like to hear from us:
+                        </p>
+                        <fieldset className="space-y-2">
+                            <label className="flex items-center space-x-2">
+                            <input
+                                type="checkbox"
+                                id="gdpr_367813"
+                                name="gdpr[367813]"
+                                value="Y"
+                                className="w-auto"
+                            />
+                            <span>Email</span>
+                            </label>
+                        </fieldset>
+                        <p className="text-xs text-gray-500 mt-3">
+                            You can unsubscribe at any time by clicking the link in the
+                            footer of our emails. For information about our privacy
+                            practices, please visit our website.
+                        </p>
+                        <p className="text-xs text-gray-500 mt-2">
+                            We use Mailchimp as our marketing platform. By clicking below to
+                            subscribe, you acknowledge that your information will be
+                            transferred to Mailchimp for processing.{" "}
+                            <a
+                                href="https://mailchimp.com/legal/terms"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 underline"
+                            >
+                                Learn more
+                            </a>{" "}
+                            about Mailchimp's privacy practices.
+                        </p>
+                    </div>
+
+                    <div className="clear">
+                        <input
+                            type="submit"
+                            name="subscribe"
+                            id="mc-embedded-subscribe"
+                            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer"
+                            value="Subscribe"
+                        />
+                    </div>
+
+                
+                
+                    {/* 
+                    <motion.div 
+                      className="text-center mb-6"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.8 }}
+                    >
+                      <h4 className="text-2xl text-neutral-900 mb-2">Join Our Mailing List</h4>
+                      <p className="text-black-600">Stay connected with the latest news and updates from BCRWC</p>
+                    </motion.div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <motion.div
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 1 }}
+                    >
+                      <label htmlFor="mce-FNAME" className="block text-sm text-neutral-700 mb-2">First Name</label>
+                      <input 
+                        type="text" 
+                        name="FNAME"
+                        id="mce-FNAME"
+                        placeholder="Your first name"
+                        className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      />
+                    </motion.div>
+                    
+                    <motion.div
+                      initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 1.1 }}
+                    >
+                      <label htmlFor="mce-LNAME" className="block text-sm text-neutral-700 mb-2">Last Name</label>
+                      <input 
+                        type="text" 
+                        name="LNAME"
+                        id="mce-LNAME"
+                        placeholder="Your last name"
+                        className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      />
+                    </motion.div>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.2 }}
+                  >
+                    <label htmlFor="mce-EMAIL" className="block text-sm text-neutral-700 mb-2">Email Address</label>
+                    <input 
+                      type="email" 
+                      name="EMAIL"
+                      id="mce-EMAIL"
+                      placeholder="your.email@example.com"
+                      className="w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      required
+                    />
+                  </motion.div>
+                  {/* Honeypot field to prevent spam 
+                  <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                    <input 
+                      type="text" 
+                      name="b_a2bf7f2f663c11b56aae15ef7_a9b0b0e5e3" 
+                      tabIndex={-1}
+                      defaultValue="" 
+                    />
+                  </div>
+
+                  <motion.div 
+                    className="text-center space-y-4"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.4 }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button 
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white px-8 py-4 text-lg rounded-xl shadow-xl transition-all duration-300 relative overflow-hidden"
+                      >
+                        <motion.div
+                          className="absolute inset-0 bg-white/20" animate={{ x: ["-100%", "100%"], opacity: [0, 0.5, 0]}}
+                          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3}}
+                        />
+
+                        <Mail className="h-5 w-5 mr-2" />
+                        <span className="relative z-10">
+                          {isSubmitting ? 'Subscribing...' : 'Subscribe to Newsletter'}
+                        </span>
+                        <Star className="h-5 w-5 ml-2" />
+                      </Button>
+                    </motion.div>
+    
+                    <motion.p 
+                      className="text-sm text-neutral-500 max-w-md mx-auto mb-8"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 1.6 }}
+                    >
+                      
+                      We respect your privacy. Unsubscribe at any time. No spam, just important updates about conservative values and community events.
+                    </motion.p>
+                  </motion.div>
+                    */}
+                </form>
+              )
+                    
+    
+                {/* Newsletter Benefits */}
+                <motion.div 
+                  className="mt-8 pt-6 border-t border-neutral-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.8 }}
+                >
+                  <h5 className="text-lg text-neutral-900 mb-4 text-center">What You'll Receive:</h5>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { icon: Calendar, text: "Event announcements & reminders", color: "blue" },
+                      { icon: Flag, text: "Legislative updates & alerts", color: "red" },
+                      { icon: Users, text: "Member highlights & stories", color: "blue" },
+                      { icon: ExternalLink, text: "Educational resources & links", color: "red" }
+                    ].map((benefit, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-center gap-3 p-3 bg-neutral-50 rounded-lg"
+                        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 2 + index * 0.1 }}
+                        whileHover={{ scale: 1.02, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
+                      >
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.1, 1],
+                            rotate: [0, 5, 0]
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: index * 0.5
+                          }}
+                        >
+                          <benefit.icon className={`h-5 w-5 ${benefit.color === 'blue' ? 'text-blue-600' : 'text-red-600'}`} />
+                        </motion.div>
+                        <span className="text-sm text-neutral-700">{benefit.text}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
             </div>
           </section>
-
-          
     
           {/* Press Coverage Section */}
           <section className="py-16 relative z-10 bg-gradient-to-b from-white/80 to-red-50/60">

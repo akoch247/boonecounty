@@ -4,10 +4,54 @@ import { Badge, Calendar, ExternalLink, Flag, Mail, Shield, Star, Users } from "
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { motion } from 'motion/react';
-import MailchimpForm from "./MailChimp";
 
 
 export default function NewsPage() {
+    useEffect(() => {
+        // Load Mailchimp validation script
+        const script = document.createElement("script");
+        script.src = "//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js";
+        script.async = true;
+        document.body.appendChild(script);
+    
+        script.onload = () => {
+          window.fnames = ["EMAIL", "FNAME", "LNAME", "PHONE"];
+          window.ftypes = ["email", "text", "text", "phone"];
+          window.$mcj = window.jQuery?.noConflict(true);
+    
+          // ✅ Fix autofill issue
+          // 1️⃣ Re-dispatch input events on focus and form submit
+          const form = document.querySelector("#mc-embedded-subscribe-form");
+          const inputs = form?.querySelectorAll("input");
+    
+          const triggerInputEvent = (input) => {
+            const event = new Event("input", { bubbles: true });
+            input.dispatchEvent(event);
+          };
+    
+          // When user focuses the field after autofill
+          inputs?.forEach((input) => {
+            input.addEventListener("focus", () => triggerInputEvent(input));
+          });
+    
+          // When user submits form (autofill values may still be "invisible" to script)
+          form?.addEventListener("submit", () => {
+            inputs?.forEach((input) => triggerInputEvent(input));
+          });
+    
+          // As an extra safety net: run once after 1 second (covers instant autofill)
+          setTimeout(() => {
+            inputs?.forEach(triggerInputEvent);
+          }, 1000);
+        };
+    
+        return () => {
+          document.body.removeChild(script);
+        };
+      }, []);
+    
+  
+  
     const newsItems = [
         {
           title: "Upcoming Election Information",
@@ -75,7 +119,6 @@ export default function NewsPage() {
   
 
     return (
-        
         <div className="space-y-0 relative">
           {/* Subtle Background */}
           <div className="fixed inset-0 z-0">
@@ -194,9 +237,10 @@ export default function NewsPage() {
               </div>
             </div>
           </section>
+        
     
           {/* Mailing List Signup Section */}
-          <section className="py-16 relative z-10 bg-gradient-to-r from-blue-600 via-indigo-700 to-red-600 overflow-hidden">
+        <section className="py-16 relative z-10 bg-gradient-to-r from-blue-600 via-indigo-700 to-red-600 overflow-hidden">
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
 
@@ -255,12 +299,176 @@ export default function NewsPage() {
                   Get the latest updates on conservative issues, upcoming events, and important news delivered directly to your inbox.
                 </motion.p>
               </motion.div>
-                  <MailchimpForm />
-            
+    
+              {/* Form Container */}
+
+              <div id="mc_embed_shell" className="flex justify-center py-10">
+                <div
+                    id="mc_embed_signup"
+                    style={{
+                    background: "#fff",
+                    clear: "left",
+                    font: "14px Helvetica, Arial, sans-serif",
+                    width: "100%",
+                    maxWidth: "600px",
+                    borderRadius: "12px",
+                    padding: "24px",
+                    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                    }}
+                >
+                <form
+                    action="https://boonecountyrepublicanwomensclub.us5.list-manage.com/subscribe/post?u=a2bf7f2f663c11b56aae15ef7&amp;id=a9b0b0e5e3&amp;v_id=3613&amp;f_id=008271ebf0"
+                    method="post"
+                    id="mc-embedded-subscribe-form"
+                    name="mc-embedded-subscribe-form"
+                    className="validate"
+                    target="_blank"
+                    noValidate
+                >
+                <div id="mc_embed_signup_scroll">
+                    <h2 className="text-2xl font-semibold mb-4 text-center text-neutral-800">
+                    Stay Connected
+                    </h2>
+
+                    <div className="text-sm mb-3 text-gray-600 text-center">
+                    <span className="text-red-500">*</span> indicates required
+                    </div>
+
+                    <div className="mc-field-group mb-4">
+                    <label htmlFor="mce-EMAIL">
+                        Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        name="EMAIL"
+                        id="mce-EMAIL"
+                        required
+                        autoComplete="email"
+                        className="w-full border border-gray-300 rounded-md p-2 mt-1"
+                    />
+                    </div>
+
+                    <div className="mc-field-group mb-4">
+                    <label htmlFor="mce-FNAME">First Name</label>
+                    <input
+                        type="text"
+                        name="FNAME"
+                        id="mce-FNAME"
+                        autoComplete="given-name"
+                        className="w-full border border-gray-300 rounded-md p-2 mt-1"
+                    />
+                    </div>
+
+                    <div className="mc-field-group mb-4">
+                    <label htmlFor="mce-LNAME">Last Name</label>
+                    <input
+                        type="text"
+                        name="LNAME"
+                        id="mce-LNAME"
+                        autoComplete="family-name"
+                        className="w-full border border-gray-300 rounded-md p-2 mt-1"
+                    />
+                    </div>
+
+                    <div id="mergeRow-gdpr" className="mb-6">
+                    <label className="font-medium">Marketing Permissions</label>
+                    <p className="text-sm text-gray-600 mb-2">
+                        Please select all the ways you would like to hear from us:
+                    </p>
+                    <fieldset className="space-y-2">
+                        <label className="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            id="gdpr_367813"
+                            name="gdpr[367813]"
+                            value="Y"
+                            className="w-auto"
+                        />
+                        <span>Email</span>
+                        </label>
+                    </fieldset>
+                    <p className="text-xs text-gray-500 mt-3">
+                        You can unsubscribe at any time by clicking the link in the
+                        footer of our emails. For information about our privacy
+                        practices, please visit our website.
+                    </p>
+                    <p className="text-xs text-gray-500 mt-2">
+                        We use Mailchimp as our marketing platform. By clicking below to
+                        subscribe, you acknowledge that your information will be
+                        transferred to Mailchimp for processing.{" "}
+                        <a
+                        href="https://mailchimp.com/legal/terms"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                        >
+                        Learn more
+                        </a>{" "}
+                        about Mailchimp's privacy practices.
+                    </p>
+                    </div>
+
+                    <div className="clear text-center">
+                    <input
+                        type="submit"
+                        name="subscribe"
+                        id="mc-embedded-subscribe"
+                        className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-md cursor-pointer transition-colors duration-200"
+                        value="Subscribe"
+                    />
+                    </div>
+                </div>
+                </form>
+                </div>
+            </div>
+        
+
+    
+                {/* Newsletter Benefits */}
+                <motion.div 
+                  className="mt-8 pt-6 border-t border-neutral-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.8 }}
+                >
+                  <h5 className="text-lg text-neutral-900 mb-4 text-center">What You'll Receive:</h5>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { icon: Calendar, text: "Event announcements & reminders", color: "blue" },
+                      { icon: Flag, text: "Legislative updates & alerts", color: "red" },
+                      { icon: Users, text: "Member highlights & stories", color: "blue" },
+                      { icon: ExternalLink, text: "Educational resources & links", color: "red" }
+                    ].map((benefit, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-center gap-3 p-3 bg-neutral-50 rounded-lg"
+                        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 2 + index * 0.1 }}
+                        whileHover={{ scale: 1.02, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
+                      >
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.1, 1],
+                            rotate: [0, 5, 0]
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: index * 0.5
+                          }}
+                        >
+                          <benefit.icon className={`h-5 w-5 ${benefit.color === 'blue' ? 'text-blue-600' : 'text-red-600'}`} />
+                        </motion.div>
+                        <span className="text-sm text-neutral-700">{benefit.text}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              
             </div>
           </section>
 
-          
     
           {/* Press Coverage Section */}
           <section className="py-16 relative z-10 bg-gradient-to-b from-white/80 to-red-50/60">
@@ -524,138 +732,139 @@ export default function NewsPage() {
           </section>
     
           {/* YouTube Channel Section */}
-      <section className="py-20 relative z-10 bg-gradient-to-r from-red-50/80 via-white/70 to-blue-50/80">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-4xl text-neutral-900 mb-6">Our YouTube Channel</h3>
-            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-              Watch our latest videos, meeting recordings, and educational content about conservative values.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {[
-              {
-                videoId: "qNM6qk-BBeU",
-                title: "Whitestown Town Candidates March 2023",
-                
-              },
-              {
-                videoId: "ADjLlNz4JVE", 
-                title: "Zionsville Town Candidates March 2023", 
-            
-              },
-              {
-                videoId: "iUggq5vbgM0", 
-                title: "Lebanon March Candidates March 2023",
-                
-              },
-          
-            ].map((video, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden border border-neutral-200"
-                initial={{ opacity: 0, y: 50 }}
+        <section className="py-20 relative z-10 bg-gradient-to-r from-red-50/80 via-white/70 to-blue-50/80">
+            <div className="max-w-6xl mx-auto px-6">
+            <motion.div
+                className="text-center mb-16"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-              >
-                <div className="relative group">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.6 }}
-                    className="aspect-video"
-                  >
-                    <iframe
-                      src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1`}
-                      title={video.title}
-                      className="w-full h-full rounded-t-xl"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    />
-                  </motion.div>
-
-                  {/* Duration badge */}
-                  <motion.div
-                    className="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-sm pointer-events-none"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  >
-                  </motion.div>
-                </div>
-                
-                <div className="p-6">
-                  <motion.h4 
-                    className="text-lg text-neutral-900"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  >
-                    {video.title}
-                  </motion.h4>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* YouTube Channel CTA */}
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="border border-red-300 rounded-xl p-1 rounded-2xl inline-block">
-              <div className="bg-white p-8 rounded-xl relative overflow-hidden">
-
-                <h4 className=" text-2xl text-neutral-900 mb-4">Subscribe to Our Channel</h4>
-                <p className="text-neutral-600 mb-6 max-w-md mx-auto">
-                  Don't miss our latest videos! Subscribe for meeting highlights, educational content, and more.
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+            >
+                <h3 className="text-4xl text-neutral-900 mb-6">Our YouTube Channel</h3>
+                <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+                Watch our latest videos, meeting recordings, and educational content about conservative values.
                 </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+                {[
+                {
+                    videoId: "qNM6qk-BBeU",
+                    title: "Whitestown Town Candidates March 2023",
+                    
+                },
+                {
+                    videoId: "ADjLlNz4JVE", 
+                    title: "Zionsville Town Candidates March 2023", 
                 
+                },
+                {
+                    videoId: "iUggq5vbgM0", 
+                    title: "Lebanon March Candidates March 2023",
+                    
+                },
+            
+                ].map((video, index) => (
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                    key={index}
+                    className="bg-white rounded-xl shadow-lg overflow-hidden border border-neutral-200"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -10, scale: 1.02 }}
                 >
-                  <Button 
-                    className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg rounded-xl shadow-xl relative overflow-hidden"
-                    onClick={() => window.open('https://www.youtube.com/@boonecountyrepublicanwomen8170', '_blank')}
-                  >
+                    <div className="relative group">
                     <motion.div
-                      className="absolute inset-0 bg-white/20"
-                      animate={{ 
-                        x: ["-100%", "100%"],
-                        opacity: [0, 0.5, 0]
-                      }}
-                      transition={{ 
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatDelay: 3
-                      }}
-                    />
-                    <ExternalLink className="h-5 w-5 mr-2" />
-                    Visit Our YouTube Channel
-                  </Button>
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.6 }}
+                        className="aspect-video"
+                    >
+                        <iframe
+                        src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1`}
+                        title={video.title}
+                        className="w-full h-full rounded-t-xl"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        />
+                    </motion.div>
+
+                    {/* Duration badge */}
+                    <motion.div
+                        className="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-sm pointer-events-none"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    >
+                    </motion.div>
+                    </div>
+                    
+                    <div className="p-6">
+                    <motion.h4 
+                        className="text-lg text-neutral-900"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                    >
+                        {video.title}
+                    </motion.h4>
+                    </div>
                 </motion.div>
-              </div>
+                ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
+
+            {/* YouTube Channel CTA */}
+            <motion.div 
+                className="text-center mt-12"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+            >
+                <div className="border border-red-300 rounded-xl p-1 rounded-2xl inline-block">
+                <div className="bg-white p-8 rounded-xl relative overflow-hidden">
+
+                    <h4 className=" text-2xl text-neutral-900 mb-4">Subscribe to Our Channel</h4>
+                    <p className="text-neutral-600 mb-6 max-w-md mx-auto">
+                    Don't miss our latest videos! Subscribe for meeting highlights, educational content, and more.
+                    </p>
+                    
+                    <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    >
+                    <Button 
+                        className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg rounded-xl shadow-xl relative overflow-hidden"
+                        onClick={() => window.open('https://www.youtube.com/@boonecountyrepublicanwomen8170', '_blank')}
+                    >
+                        <motion.div
+                        className="absolute inset-0 bg-white/20"
+                        animate={{ 
+                            x: ["-100%", "100%"],
+                            opacity: [0, 0.5, 0]
+                        }}
+                        transition={{ 
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatDelay: 3
+                        }}
+                        />
+                        <ExternalLink className="h-5 w-5 mr-2" />
+                        Visit Our YouTube Channel
+                    </Button>
+                    </motion.div>
+                </div>
+                </div>
+            </motion.div>
+            </div>
     
-          {/* Enhanced Content Section */}
+        </section>
           
         </div>
-      );
+    
+      
+    )
     
 }
 
