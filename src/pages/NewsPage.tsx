@@ -614,7 +614,7 @@ export default function NewsPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="border border-red-300 rounded-xl p-1 rounded-2xl inline-block">
+            <div className="bg-gradient-to-r from-red-600 to-red-600 p-2 rounded-xl shadow-2xl mb-8 inline-block">
               <div className="bg-white p-8 rounded-xl relative overflow-hidden">
 
                 <h4 className=" text-2xl text-neutral-900 mb-4">Subscribe to Our Channel</h4>

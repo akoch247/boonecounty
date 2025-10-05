@@ -8,18 +8,6 @@ import { Button } from '../components/ui/button';
 export default function EventsPage() {
     const eventImages = [
         {
-          src: "/stateofthetown.jpg",
-          title: "State of The Town",
-          date: "October 29st, 2025",
-          description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities."
-        },
-        {
-          src: "/whatsgoingoninIN.jpg",
-          title: "What's Going on in IN?",
-          date: "October 15th, 2025",
-          description: "You're invited! We're excited to welcome our Indiana Lt. Governor Micah Beckwith and our State Comptroller Elise Nieshalla as our guest speakers this month. After July's weather cancellation, we can't wait to hear about all the great things happening at the state level."
-        },
-        {
           src: "/charlie.jpg",
           title: "Charlie Kirk Vigil",
           date: "October 21st, 2025",
@@ -306,7 +294,7 @@ export default function EventsPage() {
               </div>
     
               {/* Call to Action */}
-              {/*}
+              
               <motion.div 
                 className="text-center py-16"
                 initial={{ opacity: 0, y: 30 }}
@@ -345,10 +333,8 @@ export default function EventsPage() {
                       </Button>
                     </motion.div>
                   </div>
-                    
                 </div>
               </motion.div>
-              */}
             </div>
           </section>
         </div>
