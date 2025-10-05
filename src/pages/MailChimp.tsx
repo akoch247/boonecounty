@@ -44,6 +44,10 @@ export default function MailchimpForm() {
           width: 600px;
           max-width: 100%;
           margin: 0 auto;
+          border-radius: 25px;
+          overflow: hidden;
+          box-shadow: 0 4px 10px;
+
         }
         #mc-embedded-subscribe-form input[type=checkbox] {
           display: inline;
@@ -74,7 +78,7 @@ export default function MailchimpForm() {
           width: 100%;
           padding: 8px;
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 15px;
           box-sizing: border-box;
         }
         .indicates-required {
@@ -105,7 +109,7 @@ export default function MailchimpForm() {
           padding: 10px 20px;
           font-size: 14px;
           font-weight: bold;
-          border-radius: 4px;
+          border-radius: 14px;
           cursor: pointer;
           margin-top: 10px;
         }
@@ -118,15 +122,18 @@ export default function MailchimpForm() {
           margin: 10px 0;
         }
         .status-message {
-          padding: 10px;
+          padding: 15px;
           margin: 15px 0;
-          border-radius: 4px;
+          border-radius: 15px;
           font-size: 14px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          text-align: center;
         }
         .status-success {
-          background-color: #d4edda;
-          border: 1px solid #c3e6cb;
-          color: #155724;
+          background-color: #d1fae5;
+          border: 1px solid #a7f3d0;
+          color: #065f46;
         }
         .status-error {
           background-color: #f8d7da;
@@ -134,9 +141,9 @@ export default function MailchimpForm() {
           color: #721c24;
         }
         .status-sending {
-          background-color: #d1ecf1;
-          border: 1px solid #bee5eb;
-          color: #0c5460;
+          background-color: #e0f2fe;
+          border: 1px solid #bae6fd;
+          color: #1e40af;
         }
       `}</style>
 
@@ -150,8 +157,9 @@ export default function MailchimpForm() {
           onSubmit={handleSubmit}
           noValidate
         >
-          <div id="mc_embed_signup_scroll">
-            <h2>Contact Information</h2>
+          <div id="mc_embed_signup_scroll" className="p-8">
+            <h1 className="text-center mb-2 ">Join Our Mailing List</h1>
+            <p className="text-center mb-4">Stay connected with the latest news and updates from BCRWC</p>
             <div className="indicates-required">
               <span className="asterisk">*</span> indicates required
             </div>
@@ -256,7 +264,7 @@ export default function MailchimpForm() {
                 type="submit"
                 name="subscribe"
                 id="mc-embedded-subscribe"
-                className="button"
+                className="button w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 "
                 value={status === 'sending' ? 'Subscribing...' : 'Subscribe'}
                 disabled={status === 'sending'}
               />

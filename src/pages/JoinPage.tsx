@@ -377,21 +377,21 @@ export default function JoinPage() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Sarah M.",
-                  role: "Member since 2022",
-                  quote: "Joining BCRWC has been transformative. The networking opportunities and educational speakers have helped me grow both personally and professionally.",
+                  name: "Val S..",
+                  role: "Member since 2020",
+                  quote: "I have met so many wonderful people and learned so many things I feel like I’ve really been able to plug-in and make a difference.",
                   color: "blue"
                 },
                 {
-                  name: "Jennifer L.",
+                  name: "Anna S.",
                   role: "Member since 2021",
-                  quote: "I love the sense of community here. We support each other while working toward our shared conservative values and making a real difference.",
+                  quote: "I moved here four years ago and I didn’t know anyone. Joining the Boone County Republican Women’s Club allowed me to meet new people and find ways to make a positive impact in the community.",
                   color: "red"
                 },
                 {
-                  name: "Patricia K.",
+                  name: "Yvonne K.",
                   role: "Member since 2023",
-                  quote: "The leadership development opportunities are incredible. I've gained confidence and skills that I use in all areas of my life.",
+                  quote: "I love the sense of community here. We support each other while working toward our shared conservative values and making a real difference.",
                   color: "blue"
                 }
               ].map((testimonial, index) => (
