@@ -16,8 +16,8 @@ export default function EventsPage() {
         {
           url: "https://youarecurrent.com/2025/09/22/mourners-fill-mulberry-fields-for-charlie-kirk-vigil/",
           duration: "3.5 hours",
-          address: "Boone County",
-          time: "6:00-9:30",
+          address: "9645 Whitestown Rd, Zionsville, IN 46077",
+          time: "6:00-9:30pm",
           src: "/charlie.jpg",
           title: "Charlie Kirk Vigil",
           date: "October 21st, 2025",
@@ -25,9 +25,9 @@ export default function EventsPage() {
           attendees: "2500"
         },
         {
-          duration: "3 hours",
-          address: "Boone County",
-          time: "6:00-9:00",
+          duration: "1.5 hours",
+          address: "6210 Veterans Drive, Whitestown",
+          time: "7:00-8:30pm",
           src: "/monthly.jpg",
           title: "Monthly Meeting",
           date: "October 2024",
@@ -37,7 +37,7 @@ export default function EventsPage() {
         {
           duration: "3 hours",
           address: "Boone County",
-          time: "6:00-9:00",
+          time: "6:00-9:00pm",
           src: "/barbecue.jpeg",
           title: "Community BBQ",
           date: "September 2024",
@@ -47,7 +47,7 @@ export default function EventsPage() {
         {
           duration: "3 hours",
           address: "Boone County",
-          time: "6:00-9:00",
+          time: "6:00-9:00pm",
           src: "/beckyrally.jpg",
           title: "Rally for Freedom",
           date: "August 2024",
@@ -57,7 +57,7 @@ export default function EventsPage() {
         {
           duration: "3 hours",
           address: "Boone County",
-          time: "6:00-9:00",
+          time: "6:00-9:00pm",
           src: "/becky.jpg",
           title: "Leadership Workshop",
           date: "July 2024",
@@ -69,9 +69,9 @@ export default function EventsPage() {
     const upcomingEvents = [
         {
             url: "https://business.zionsvillechamber.org/ap/Events/Register/lzFEXeDcjC5Cw?fbclid=IwY2xjawNQ1eJleHRuA2FlbQIxMABicmlkETFIb3lZZnNIbmZUTjF2ME9jAR7ylfMdJ03pJ6YsDbh8GCwjaxtZTk53nG97enjafyyPCFEUmQ2w7pBs0v2KPw_aem_7FTfcf6qPPzMofl9w4p2yg",
-            duration: "3 hours",
-            address: "Boone County",
-            time: "6:00-9:00",
+            duration: "1.5 hours",
+            address: "Indianapolis Executive Airport",
+            time: "8:00-9:30am",
             src: "stateofthetown.jpg",
             title: "State of The Town",
             date: "October 29st, 2025",
@@ -80,9 +80,9 @@ export default function EventsPage() {
         },
         {
 
-            duration: "3 hours",
-            address: "Boone County",
-            time: "6:00-9:00",
+            duration: "1.5 hours",
+            address: "6210 Veterans Drive, Whitestown",
+            time: "7:00-8:30pm",
             src: "whatsgoingoninIN.jpg",
             title: "What's Going on in IN?",
             date: "October 15th, 2025",
