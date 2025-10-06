@@ -74,7 +74,7 @@ export default function EventsPage() {
             time: "6:00-9:00",
             src: "stateofthetown.jpg",
             title: "State of The Town",
-            date: "October 29st, 2025",
+            date: "October 29th, 2025",
             description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities.",
             registration: "Required",
         },
@@ -177,7 +177,7 @@ export default function EventsPage() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   {[
-                    { number: "24+", label: "Events This Year", icon: Calendar, color: "blue" },
+                    { number: "12+", label: "Events This Year", icon: Calendar, color: "blue" },
                     { number: "500+", label: "Attendees", icon: Users, color: "red" },
                     { number: "12", label: "Guest Speakers", icon: Star, color: "blue" }
                   ].map((stat, index) => (
