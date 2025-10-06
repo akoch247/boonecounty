@@ -1,44 +1,96 @@
 import React from "react";
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Card, CardContent } from '../components/ui/card';
-import { Badge, Calendar, ChevronRight, ExternalLink, Star, Users } from 'lucide-react';
+import { Badge, Calendar, ChevronRight, Clock, ExternalLink, Link, Mail, MapPin, Star, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Button } from '../components/ui/button';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function EventsPage() {
+  const [activeTab, setActiveTab] = useState('home');
+  const navigate = useNavigate();
+
     const eventImages = [
         {
+          url: "https://youarecurrent.com/2025/09/22/mourners-fill-mulberry-fields-for-charlie-kirk-vigil/",
+          duration: "3.5 hours",
+          address: "Boone County",
+          time: "6:00-9:30",
           src: "/charlie.jpg",
           title: "Charlie Kirk Vigil",
           date: "October 21st, 2025",
-          description: "Candlelight vigil honoring the life of Charlie Kirk"
+          description: "Candlelight vigil honoring the life of Charlie Kirk",
+          attendees: "2500"
         },
         {
+          duration: "3 hours",
+          address: "Boone County",
+          time: "6:00-9:00",
           src: "/monthly.jpg",
           title: "Monthly Meeting",
           date: "October 2024",
-          description: "Guest speaker on constitutional rights"
+          description: "Guest speaker on constitutional rights",
+          attendees: "75"
         },
         {
+          duration: "3 hours",
+          address: "Boone County",
+          time: "6:00-9:00",
           src: "/barbecue.jpeg",
           title: "Community BBQ",
           date: "September 2024",
-          description: "Annual fundraising event"
+          description: "Annual fundraising event",
+          attendees: "75"
         },
         {
+          duration: "3 hours",
+          address: "Boone County",
+          time: "6:00-9:00",
           src: "/beckyrally.jpg",
           title: "Rally for Freedom",
           date: "August 2024",
-          description: "Supporting conservative candidates"
+          description: "Supporting conservative candidates",
+          attendees: "500"
         },
         {
+          duration: "3 hours",
+          address: "Boone County",
+          time: "6:00-9:00",
           src: "/becky.jpg",
           title: "Leadership Workshop",
           date: "July 2024",
-          description: "Empowering conservative women leaders"
+          description: "Empowering conservative women leaders",
+          attendees: "100"
         }
-        
-      ];
+    ];
+
+    const upcomingEvents = [
+        {
+            url: "https://business.zionsvillechamber.org/ap/Events/Register/lzFEXeDcjC5Cw?fbclid=IwY2xjawNQ1eJleHRuA2FlbQIxMABicmlkETFIb3lZZnNIbmZUTjF2ME9jAR7ylfMdJ03pJ6YsDbh8GCwjaxtZTk53nG97enjafyyPCFEUmQ2w7pBs0v2KPw_aem_7FTfcf6qPPzMofl9w4p2yg",
+            duration: "3 hours",
+            address: "Boone County",
+            time: "6:00-9:00",
+            src: "stateofthetown.jpg",
+            title: "State of The Town",
+            date: "October 29st, 2025",
+            description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities.",
+            registration: "Required",
+        },
+        {
+
+            duration: "3 hours",
+            address: "Boone County",
+            time: "6:00-9:00",
+            src: "whatsgoingoninIN.jpg",
+            title: "What's Going on in IN?",
+            date: "October 15th, 2025",
+            description: "You're invited! We're excited to welcome our Indiana Lt. Governor Micah Beckwith and our State Comptroller Elise Nieshalla as our guest speakers this month.",
+            
+        },
+    ]
+    
     return (
         <div className="space-y-0 relative">
           {/* Subtle Background */}
@@ -47,7 +99,7 @@ export default function EventsPage() {
           </div>
     
           {/* Animated Hero Section */}
-          <section className="py-20 relative z-10 bg-gradient-to-br from-red-50/80 via-white/70 to-blue-50/80 overflow-hidden">
+          <section className="py-16 relative z-10 bg-gradient-to-br from-red-50/80 via-white/70 to-blue-50/80 overflow-hidden">
             {/* Animated background elements */}
             <motion.div
               className="absolute top-20 left-20 w-20 h-20 bg-red-200/20 rounded-full blur-xl"
@@ -100,7 +152,7 @@ export default function EventsPage() {
                 viewport={{ once: true }}
               >
                 <motion.h2 
-                  className="text-5xl text-neutral-900 py-16"
+                  className="text-5xl text-neutral-900 mb-16"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -109,7 +161,7 @@ export default function EventsPage() {
                 </motion.h2>
                 
                 <motion.p 
-                  className="text-xl text-neutral-600 leading-relaxed mb-8"
+                  className="text-xl text-neutral-600 leading-relaxed mb-12"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
@@ -125,13 +177,13 @@ export default function EventsPage() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   {[
-                    { number: "12+", label: "Events This Year", icon: Calendar, color: "blue" },
+                    { number: "24+", label: "Events This Year", icon: Calendar, color: "blue" },
                     { number: "500+", label: "Attendees", icon: Users, color: "red" },
-                    { number: "10", label: "Guest Speakers", icon: Star, color: "blue" }
+                    { number: "12", label: "Guest Speakers", icon: Star, color: "blue" }
                   ].map((stat, index) => (
                     <motion.div
                       key={index}
-                      className="text-center flex-1 mx-4"
+                      className="text-center"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
@@ -154,15 +206,271 @@ export default function EventsPage() {
                         <stat.icon className={`h-6 w-6 ${stat.color === 'blue' ? 'text-blue-600' : 'text-red-600'}`} />
                       </motion.div>
                       <div className={`text-2xl ${stat.color === 'blue' ? 'text-blue-600' : 'text-red-600'} mb-1`}>{stat.number}</div>
-                      <div className="text-sm text-neutral-600 mb-16">{stat.label}</div>
+                      <div className="text-sm text-neutral-600">{stat.label}</div>
                     </motion.div>
                   ))}
                 </motion.div>
               </motion.div>
             </div>
           </section>
+    
+          {/* Upcoming Events Calendar Section */}
+          <section className="py-16 relative z-10 bg-gradient-to-r from-blue-600 via-indigo-700 to-red-600 overflow-hidden">
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{
+               
+                backgroundSize: '60px 60px'
+              }}></div>
+            </div>
+    
+            <div className="max-w-6xl mx-auto px-6 relative">
+              <motion.div
+                className="text-center mb-16"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <motion.h3 
+                  className="text-4xl text-white mb-6 flex items-center justify-center gap-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      rotate: [0, 10, 0]
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity
+                    }}
+                  >
+                    <Calendar className="h-8 w-8 text-yellow-300" />
+                  </motion.div>
+                  Upcoming Events Calendar
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      rotate: [0, -10, 0]
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: 1.5
+                    }}
+                  >
+                    <Star className="h-8 w-8 text-yellow-300" />
+                  </motion.div>
+                </motion.h3>
+                
+                <motion.p 
+                  className="text-xl text-white max-w-2xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  Mark your calendar for these exciting upcoming events and meetings. Don't miss out on opportunities to connect and make a difference!
+                </motion.p>
+              </motion.div>
+    
+              <div className="grid lg:grid-cols-2 gap-8">
+                {upcomingEvents.map((event, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.8, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -10 }}
+                  >
+                    <Card className={`border-white/20 overflow-hidden shadow-2xl transition-all duration-500 group `}>
+                      <div className="aspect-video relative overflow-hidden">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          <ImageWithFallback
+                            src={event.src}
+                            alt={event.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </motion.div>
+                        
+                        {/* Animated overlay */}
+                        <motion.div 
+                          className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500"
+                        />
+                        
+                       
+    
+                        {/* Date badge */}
+                       
+    
+                        {/* Registration status */}
+                        <motion.div
+                          className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          initial={{ y: 20, opacity: 0 }}
+                          whileHover={{ y: 0, opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="bg-white/90 backdrop-blur p-3 rounded-lg shadow-lg">
+                            <div className="flex items-center justify-between text-sm text-neutral-800">
+                              <div className="flex items-center gap-2">
+                                <Clock className="h-4 w-4 text-blue-600" />
+                                <span>{event.time} • {event.duration}</span>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                      
+                      <CardContent className="p-6 bg-white">
+                        <motion.div 
+                          className="mb-4"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                        >
+                          <h3 className="text-xl text-neutral-900 mb-2">{event.title}</h3>
+      
+                          
+                          {/* Event details */}
+                          <div className="space-y-2 mb-4">
+                            <motion.div 
+                              className="flex items-center gap-2 text-sm text-neutral-600"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                            >
+                               <Calendar className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-600' : 'text-red-600'}`} />
+                               <span>{event.date}</span> 
             
-          {/* Events Grid Section */}
+                            </motion.div>
+                            
+                          <motion.div
+                            className="flex items-center gap-2 text-sm text-neutral-600"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                            >
+                              <Clock className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-600' : 'text-red-600'}`} />
+                              <span>{event.time} • {event.duration}</span>
+                            </motion.div>
+
+
+                            <motion.div 
+                              className="flex items-start gap-2 text-sm text-neutral-600"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                            >
+                              <MapPin className={`h-4 w-4 mt-0.5 ${index % 2 === 0 ? 'text-blue-600' : 'text-red-600'} flex-shrink-0`} />
+                              <span className="leading-tight">{event.address}</span>
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                        
+                        <motion.p 
+                          className="text-neutral-600 leading-relaxed text-sm mb-6"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                        >
+                          {event.description}
+                        </motion.p>
+    
+                        {/* Action button */}
+                        <motion.div 
+                          className="pt-4 border-t border-neutral-100"
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                        >
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Button
+                              className={`w-full bg-gradient-to-r from-blue-600 to-red-600 px-6 py-3 rounded-xl shadow-lg text-white`}
+                              onClick={() => {
+                                if (event.url) {
+                                  window.open(event.url, "_blank"); // go to registration
+                                }
+                              }}
+                              disabled={!event.url} // disables the button if no registration
+                            >
+                              <Calendar className="h-5 w-5 mr-2" />
+                              {event.url ? "Register Now" : "No Registration Required"}
+                              {event.url && <ChevronRight className="h-5 w-5 ml-2" />}
+                            </Button>
+
+
+                          </motion.div>
+                        </motion.div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+    
+              {/* CTA Section */}
+              <motion.div 
+                className="text-center mt-16 py-16"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                viewport={{ once: true }}
+              >
+
+
+                {/* Blurred gladd container */} 
+                <div className=" backdrop-blur-lg p-8 rounded-xl border border-white/20">
+                  <h4 className="text-2xl text-white mb-4">Never Miss an Event!</h4>
+                  <p className="text-white mb-6 max-w-md mx-auto">
+                    Subscribe to our newsletter or join our Facebook group to get notified about all upcoming events and meetings.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      
+                      <Button 
+                        className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-xl shadow-lg"
+                        onClick={() => navigate('/news')}
+                      >
+                        <Mail className="h-5 w-5 mr-2" />
+                        Subscribe to Newsletter
+                      </Button>
+
+                    </motion.div>
+
+                    
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button 
+                        variant="outline"
+                        className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-xl shadow-lg"
+                        onClick={() => window.open('https://www.facebook.com/groups/808957406673035', '_blank')}
+                      >
+                        <Users className="h-5 w-5 mr-2" />
+                        Join Facebook Group
+                        <ExternalLink className="h-4 w-4 ml-2" />
+                      </Button>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+            
+          {/* Past Events Grid Section */}
           <section className="py-16 relative z-10 bg-gradient-to-b from-white/80 to-red-50/60">
             <div className="max-w-6xl mx-auto px-6">
               <motion.div
@@ -172,13 +480,13 @@ export default function EventsPage() {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl text-neutral-900 mb-4">Event Gallery</h3>
+                <h3 className="text-3xl text-neutral-900 mb-4">Past Events Gallery</h3>
                 <p className="text-lg text-neutral-600">
-                  Capturing moments from our impactful community events and gatherings
+                  Capturing moments from our recent community events and gatherings
                 </p>
               </motion.div>
     
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {eventImages.map((event, index) => (
                   <motion.div
                     key={index}
@@ -203,7 +511,7 @@ export default function EventsPage() {
                         
                         {/* Animated overlay */}
                         <motion.div 
-                          className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                           initial={{ opacity: 0 }}
                           whileHover={{ opacity: 1 }}
                         />
@@ -216,75 +524,144 @@ export default function EventsPage() {
                           transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                           whileHover={{ scale: 1.1, rotate: 5 }}
                         >
-                          <Badge variant="outline" className="bg-white/90 text-xs border-neutral-300 shadow-lg">
+                          <Badge variant="outline" className="bg-white/95 text-xs border-neutral-300 shadow-lg">
                             {event.date}
                           </Badge>
                         </motion.div>
     
-                        {/* Floating icon */}
+                        {/* Attendees badge */}
                         <motion.div
-                          className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                          animate={{ 
-                            scale: [1, 1.2, 1],
-                            rotate: [0, 10, 0]
-                          }}
-                          transition={{ 
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: index * 0.3
-                          }}
+                          className="absolute top-4 left-4"
+                          initial={{ opacity: 0, scale: 0, rotate: 10 }}
+                          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                          whileHover={{ scale: 1.1, rotate: -5 }}
                         >
-                          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur">
-                            <Calendar className="h-5 w-5 text-white" />
+                          <Badge className={`${index % 2 === 0 ? 'bg-blue-600' : 'bg-red-600'} text-white text-xs shadow-lg`}>
+                            <Users className="h-3 w-3 mr-1" />
+                            {event.attendees}
+                          </Badge>
+                        </motion.div>
+    
+                        {/* Floating event info overlay on hover */}
+                        <motion.div
+                          className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          initial={{ y: 20, opacity: 0 }}
+                          whileHover={{ y: 0, opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="bg-white/90 backdrop-blur p-3 rounded-lg shadow-lg">
+                            <div className="flex items-center gap-2 text-sm text-neutral-800 mb-1">
+                              <Clock className="h-4 w-4 text-blue-600" />
+                              <span>{event.time} • {event.duration}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-neutral-700">
+                              <MapPin className="h-4 w-4 text-red-600" />
+                              <span className="truncate">{event.address.split(',')[0]}</span>
+                            </div>
                           </div>
                         </motion.div>
                       </div>
                       
                       <CardContent className="p-6">
                         <motion.div 
-                          className="flex justify-between items-start mb-4"
+                          className="mb-4"
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                         >
-                          <h3 className="text-xl text-neutral-900">{event.title}</h3>
+                          <h3 className="text-xl text-neutral-900 mb-4">{event.title}</h3>
+                          {/* Event details: date, time, location */}
+                          <div className="space-y-2 mb-4">
+                            {/* Date */}
+                            <motion.div
+                              className="flex items-center gap-2 text-sm text-neutral-600"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.45 + index * 0.1 }}
+                            >
+                              <Calendar className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-600' : 'text-red-600'}`} />
+                              <span>{event.date}</span>
+                            </motion.div>
+                          
+                          {/* Event details */}
+                          <div className="space-y-2 mb-4">
+                            <motion.div 
+                              className="flex items-center gap-2 text-sm text-neutral-600"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                            >
+                              <Clock className={`h-4 w-4 ${index % 2 === 0 ? 'text-blue-600' : 'text-red-600'}`} />
+                              <span>{event.time} • {event.duration}</span>
+                            </motion.div>
+                            
+                            <motion.div 
+                              className="flex items-start gap-2 text-sm text-neutral-600"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                            >
+                              <MapPin className={`h-4 w-4 mt-0.5 ${index % 2 === 0 ? 'text-blue-600' : 'text-red-600'} flex-shrink-0`} />
+                              <span className="leading-tight">{event.address}</span>
+                            </motion.div>
+                          </div>
+                          </div>
                         </motion.div>
+                      
                         
                         <motion.p 
-                          className="text-neutral-600 leading-relaxed"
+                          className="text-neutral-600 leading-relaxed text-sm p-2 mb-4"
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
-                          transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                          transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
                         >
                           {event.description}
                         </motion.p>
     
                         {/* Interactive elements */}
                         <motion.div 
-                          className="mt-4 pt-4 border-t border-neutral-100"
+                          className="mt-3 pt-4 border-t border-neutral-100"
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                          transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                         >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                              <motion.div
-                                className={`w-2 h-2 rounded-full ${index % 2 === 0 ? 'bg-blue-500' : 'bg-red-500'}`}
-                                animate={{ scale: [1, 1.3, 1] }}
-                                transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-                              />
-                              <span className="text-sm text-neutral-500">Event Complete</span>
+                          <div className="flex items-center justify-between py-3">
+                            <div className="flex items-center gap-4">
+                              {/* Status indicator */}
+                              <div className="flex items-center gap-2">
+                                <motion.div
+                                  className={`w-2 h-2 rounded-full ${index % 2 === 0 ? 'bg-blue-500' : 'bg-red-500'}`}
+                                  animate={{ scale: [1, 1.3, 1] }}
+                                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                                />
+                                <span className="text-sm text-neutral-500">Event Complete</span>
+                              </div>
+                              
+                              {/* Attendee count */}
+                              <div className="flex items-center gap-1 text-sm text-neutral-500">
+                                <Users className="h-4 w-4" />
+                                <span>{event.attendees} attendees</span>
+                              </div>
                             </div>
+                            {event.url && (
+
                             
                             <motion.div
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.95 }}
                             >
-                              <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-800 hover:bg-blue-50">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className={`${index % 2 === 0 ? 'text-blue-600 hover:text-blue-800 hover:bg-blue-50' : 'text-red-600 hover:text-red-800 hover:bg-red-50'}`}
+                                onClick={() => window.open(event.url, "_blank")}
+                              >
                                 <ExternalLink className="h-4 w-4 mr-1" />
-                                View More
+                                View Details
                               </Button>
                             </motion.div>
+                            )}
                           </div>
                         </motion.div>
                       </CardContent>
@@ -294,15 +671,14 @@ export default function EventsPage() {
               </div>
     
               {/* Call to Action */}
-              
               <motion.div 
-                className="text-center py-16"
+                className="text-center mt-16 py-16" 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-gradient-to-r from-blue-600 to-red-600 p-1 rounded-2xl inline-block">
+                <div className="bg-gradient-to-r from-blue-600 to-red-600 p-2 rounded-xl inline-block">
                   <div className="bg-white p-8 rounded-xl">
                     <h3 className="text-2xl text-neutral-900 mb-4">Don't Miss Our Next Event!</h3>
                     <p className="text-neutral-600 mb-6">Join us at our next meeting and be part of our growing community.</p>
@@ -312,7 +688,7 @@ export default function EventsPage() {
                       whileTap={{ scale: 0.95 }}
                     >
                       <Button 
-                        onClick={() => window.open('https://boone-county-republican-womens-club.square.site/', '_blank')}
+                        onClick={() => navigate("/join")}
                         className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white px-10 py-4 text-lg rounded-xl shadow-xl relative overflow-hidden"
                       >
                         <motion.div

@@ -72,11 +72,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.div 
-                className="w-2 h-2 bg-blue-600 rounded-full"
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              ></motion.div>
+              
               <span className="text-lg text-neutral-700">Boone County Republican Women's Club</span>
             </motion.div>
 
