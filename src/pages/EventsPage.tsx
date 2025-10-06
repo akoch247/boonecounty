@@ -55,9 +55,15 @@ export default function EventsPage() {
           attendees: "500"
         },
         {
+<<<<<<< HEAD
           duration: "3 hours",
           address: "Boone County",
           time: "6:00-9:00pm",
+=======
+          duration: "1.5 hours",
+          address: "6210 Veterans Drive, Whitestown",
+          time: "7:00-8:30pm",
+>>>>>>> main
           src: "/becky.jpg",
           title: "Leadership Workshop",
           date: "July 2024",
@@ -74,13 +80,17 @@ export default function EventsPage() {
             time: "8:00-9:30am",
             src: "stateofthetown.jpg",
             title: "State of The Town",
-            date: "October 29st, 2025",
+            date: "October 29th, 2025",
             description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities.",
             registration: "Required",
         },
         {
 
+<<<<<<< HEAD
             duration: "1.5 hours",
+=======
+            duration: "3 hours",
+>>>>>>> main
             address: "6210 Veterans Drive, Whitestown",
             time: "7:00-8:30pm",
             src: "whatsgoingoninIN.jpg",
@@ -177,7 +187,7 @@ export default function EventsPage() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   {[
-                    { number: "24+", label: "Events This Year", icon: Calendar, color: "blue" },
+                    { number: "12+", label: "Events This Year", icon: Calendar, color: "blue" },
                     { number: "500+", label: "Attendees", icon: Users, color: "red" },
                     { number: "12", label: "Guest Speakers", icon: Star, color: "blue" }
                   ].map((stat, index) => (
