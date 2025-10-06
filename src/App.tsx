@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import EventsPage from "./pages/EventsPage";
 import GetInvolvedPage from "./pages/GetInvolvedPage";
@@ -8,8 +8,20 @@ import JoinPage from "./pages/JoinPage";
 import NewsPage from "./pages/NewsPage";
 import Layout from "./layout/Layout";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   return (
+    <>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -21,5 +33,7 @@ export default function App() {
         <Route path="news" element={<NewsPage />} />
       </Route>
     </Routes>
+    </>
+    
   );
 }
