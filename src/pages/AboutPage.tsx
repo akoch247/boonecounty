@@ -16,7 +16,7 @@ export default function AboutPage() {
         { name: 'Cheryl Hancock', title: 'Membership Committee', image: "/cheryl.jpg"},
         { name: 'Regina Sharrow', title: 'Events', image: "/regina.jpeg"},
         { name: 'Anna Schappaugh', title: 'Campaign Activities', image: "/anna.png"},
-        { name: 'Emily Myers', title: 'Correseponding Secretary', image: "/emilee.jpeg"},
+        { name: 'Emily Myers', title: 'Correseponding Secretary', image: "/emily1.jpg"},
       ];
     return (
         <div className="space-y-0 relative">
