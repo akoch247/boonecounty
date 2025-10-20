@@ -13,6 +13,18 @@ export default function EventsPage() {
   const navigate = useNavigate();
 
     const eventImages = [
+
+          {
+
+            duration: "1.5 hours",
+            address: "6210 Veterans Drive, Whitestown",
+            time: "7:00-8:30pm",
+            src: "whatsgoingoninIN.jpg",
+            title: "What's Going on in IN?",
+            date: "October 15th, 2025",
+            description: "You're invited! We're excited to welcome our Indiana Lt. Governor Micah Beckwith and our State Comptroller Elise Nieshalla as our guest speakers this month.",
+            
+        },
         {
           url: "https://youarecurrent.com/2025/09/22/mourners-fill-mulberry-fields-for-charlie-kirk-vigil/",
           duration: "3.5 hours",
@@ -67,28 +79,46 @@ export default function EventsPage() {
     ];
 
     const upcomingEvents = [
-        {
-            url: "https://business.zionsvillechamber.org/ap/Events/Register/lzFEXeDcjC5Cw?fbclid=IwY2xjawNQ1eJleHRuA2FlbQIxMABicmlkETFIb3lZZnNIbmZUTjF2ME9jAR7ylfMdJ03pJ6YsDbh8GCwjaxtZTk53nG97enjafyyPCFEUmQ2w7pBs0v2KPw_aem_7FTfcf6qPPzMofl9w4p2yg",
-            duration: "1.5 hours",
-            address: "Indianapolis Executive Airport",
-            time: "8:00-9:30am",
-            src: "stateofthetown.jpg",
-            title: "State of The Town",
-            date: "October 29th, 2025",
-            description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities.",
-            registration: "Required",
-        },
-        {
-
+          {
+            address: "TBD",
+            duration: "TBD",
+            time: "TBD",
+            src: "Caroline.jpeg",
+            title: "Christmas Caroling",
+            date: "December 13th",
+            description: "Coming Soon",
+          },
+          {
             duration: "1.5 hours",
             address: "6210 Veterans Drive, Whitestown",
             time: "7:00-8:30pm",
-            src: "whatsgoingoninIN.jpg",
-            title: "What's Going on in IN?",
-            date: "October 15th, 2025",
-            description: "You're invited! We're excited to welcome our Indiana Lt. Governor Micah Beckwith and our State Comptroller Elise Nieshalla as our guest speakers this month.",
-            
+            src: "/monthlymeeting.jpg",
+            title: "Monthly Meeting",
+            date: "November 15th",
+            description: "Guest speaker on constitutional rights",
+          },
+      
+          {
+            address: "Aspasia Coffee and Bake Shop",
+            duration: "All day",
+            time: "7:00am-2:00pm",
+            src: "beckydiaperdrive.PNG",
+            title: "State Rep Becky Cash's Thanksgiving Diaper Drive",
+            date: "October-November",
+            description: "Now through Thanksgiving we are collecting diaper wipes and sizes 5/6 diapers for the Boone County Diaper Bank",
         },
+        {
+          url: "https://business.zionsvillechamber.org/ap/Events/Register/lzFEXeDcjC5Cw?fbclid=IwY2xjawNQ1eJleHRuA2FlbQIxMABicmlkETFIb3lZZnNIbmZUTjF2ME9jAR7ylfMdJ03pJ6YsDbh8GCwjaxtZTk53nG97enjafyyPCFEUmQ2w7pBs0v2KPw_aem_7FTfcf6qPPzMofl9w4p2yg",
+          duration: "1.5 hours",
+          address: "Indianapolis Executive Airport",
+          time: "8:00-9:30am",
+          src: "/stateofthetown.jpg",
+          title: "State of The Town",
+          date: "October 29th, 2025",
+          description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities.",
+          registration: "Required",
+      },
+
     ]
     
     return (
