@@ -94,7 +94,7 @@ export default function EventsPage() {
             time: "7:00-8:30pm",
             src: "/monthlymeeting.jpg",
             title: "Monthly Meeting",
-            date: "November 15th",
+            date: "November 19th",
             description: "Guest speaker on constitutional rights",
           },
       
