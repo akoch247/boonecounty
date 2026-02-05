@@ -45,7 +45,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-neutral-600">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                <span>Whitestown, IN 46075</span>
+                <span>Golf Club of Indiana</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />

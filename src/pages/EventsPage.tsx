@@ -105,7 +105,7 @@ export default function EventsPage() {
     const upcomingEvents = [
           {
             duration: "1 hour",
-            address: "6210 Veterans Drive, Whitestown",
+            address: "Golf Club of Indiana",
             time: "7:00-8:00pm",
             src: "/Garden.PNG",
             title: "Gardening 101",
