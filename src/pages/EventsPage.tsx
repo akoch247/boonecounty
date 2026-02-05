@@ -12,7 +12,31 @@ export default function EventsPage() {
   const [activeTab, setActiveTab] = useState('home');
   const navigate = useNavigate();
 
-    const eventImages = [
+          const eventImages = [
+            
+            {
+
+              duration: "1.5 hours",
+              address: "Aspasia Coffee and Bake Shop",
+              time: "7:00am-2:00pm",
+              src: "beckydiaperdrive.PNG",
+              title: "State Rep Becky Cash's Thanksgiving Diaper Drive",
+              date: "October-November",
+              description: "Now through Thanksgiving we are collecting diaper wipes and sizes 5/6 diapers for the Boone County Diaper Bank",
+              
+          },
+
+          {
+
+            duration: "1.5 hours",
+            address: "Indianapolis Executive Airport",
+            time: "8:00-9:30am",
+            src: "/stateofthetown.jpg",
+            title: "State Rep Becky Cash's Thanksgiving Diaper Drive",
+            date: "October 29th, 2025",
+            description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities.",
+            
+        },
 
           {
 
@@ -80,45 +104,14 @@ export default function EventsPage() {
 
     const upcomingEvents = [
           {
-            address: "TBD",
-            duration: "TBD",
-            time: "TBD",
-            src: "Caroline.jpeg",
-            title: "Christmas Caroling",
-            date: "December 13th",
-            description: "Coming Soon",
-          },
-          {
-            duration: "1.5 hours",
+            duration: "1 hour",
             address: "6210 Veterans Drive, Whitestown",
-            time: "7:00-8:30pm",
-            src: "/monthlymeeting.jpg",
-            title: "Monthly Meeting",
-            date: "November 19th",
-            description: "Guest speaker on constitutional rights",
+            time: "7:00-8:00pm",
+            src: "/Garden.PNG",
+            title: "Gardening 101",
+            date: "February 18th",
+            description: "Sew seeds while learning organic gardening skills",
           },
-      
-          {
-            address: "Aspasia Coffee and Bake Shop",
-            duration: "All day",
-            time: "7:00am-2:00pm",
-            src: "beckydiaperdrive.PNG",
-            title: "State Rep Becky Cash's Thanksgiving Diaper Drive",
-            date: "October-November",
-            description: "Now through Thanksgiving we are collecting diaper wipes and sizes 5/6 diapers for the Boone County Diaper Bank",
-        },
-        {
-          url: "https://business.zionsvillechamber.org/ap/Events/Register/lzFEXeDcjC5Cw?fbclid=IwY2xjawNQ1eJleHRuA2FlbQIxMABicmlkETFIb3lZZnNIbmZUTjF2ME9jAR7ylfMdJ03pJ6YsDbh8GCwjaxtZTk53nG97enjafyyPCFEUmQ2w7pBs0v2KPw_aem_7FTfcf6qPPzMofl9w4p2yg",
-          duration: "1.5 hours",
-          address: "Indianapolis Executive Airport",
-          time: "8:00-9:30am",
-          src: "/stateofthetown.jpg",
-          title: "State of The Town",
-          date: "October 29th, 2025",
-          description: "The 2025 State of the Town event, presented by the Zionsville Chamber of Commerce in partnership with the Town of Zionsville, offers a unique opportunity to learn about the town's vision, progress, and future priorities.",
-          registration: "Required",
-      },
-
     ]
     
     return (
