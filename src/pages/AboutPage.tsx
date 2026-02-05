@@ -7,11 +7,11 @@ import { motion } from 'motion/react';
 export default function AboutPage() {
     const members = [
         { name: 'Anna Schappaugh', title: 'President', image: "anna.png"},
-        { name: 'Kathleen Poland', title: 'Vice President', image: "" },
+        { name: 'Kathleen Poland', title: 'Vice President', image: "/americanflag.jpg"},
         { name: 'Sandy Jasionowski', title: 'Treasurer', image: "/sandra.png"},
         { name: 'Valerie Swack', title: 'Secretary', image: "/val.png"},
         { name: 'Yvonne Koch', title: 'Parliamentarian', image: "/yvonne.jpeg"},
-        { name: 'Kaitlin Watson', title: 'Communications', image: ""},
+        { name: 'Kaitlin Watson', title: 'Communications', image: "/americanflag.jpg"},
         { name: 'Sam Anders', title: 'Marketing Committee', image: "/sam.png"},
         { name: 'Cheryl Hancock', title: 'Membership Committee', image: "/cheryl.jpg"},
         { name: 'Regina Sharrow', title: 'Community Relations', image: "/regina.jpeg"},
