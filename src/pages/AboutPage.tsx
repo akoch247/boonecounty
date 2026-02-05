@@ -6,17 +6,17 @@ import { motion } from 'motion/react';
 
 export default function AboutPage() {
     const members = [
-        { name: 'Valerie Swack', title: 'President', image: "val.png"},
-        { name: 'Anna Schappaugh', title: 'Vice President', image: "anna.png" },
+        { name: 'Anna Schappaugh', title: 'President', image: "anna.png"},
+        { name: 'Kathleen Poland', title: 'Vice President', image: "" },
         { name: 'Sandy Jasionowski', title: 'Treasurer', image: "/sandra.png"},
-        { name: 'Diana Freeman', title: 'Secretary', image: "/diane.png"},
-        { name: 'Jenny Beyer', title: 'Parliamentarian', image: "/jenny.png"},
-        { name: 'Yvonne Koch', title: 'Legislative Committee', image: "/yvonne.jpeg"},
+        { name: 'Valerie Swack', title: 'Secretary', image: "/val.png"},
+        { name: 'Yvonne Koch', title: 'Parliamentarian', image: "/yvonne.jpeg"},
+        { name: 'Kaitlin Watson', title: 'Communications', image: ""},
         { name: 'Sam Anders', title: 'Marketing Committee', image: "/sam.png"},
         { name: 'Cheryl Hancock', title: 'Membership Committee', image: "/cheryl.jpg"},
-        { name: 'Regina Sharrow', title: 'Events', image: "/regina.jpeg"},
-        { name: 'Anna Schappaugh', title: 'Campaign Activities', image: "/anna.png"},
+        { name: 'Regina Sharrow', title: 'Community Relations', image: "/regina.jpeg"},
         { name: 'Emily Myers', title: 'Correseponding Secretary', image: "/emily1.jpg"},
+        { name: 'Diana Freeman', title: 'Recruiting ', image: "/diane.png"},
       ];
     return (
         <div className="space-y-0 relative">
