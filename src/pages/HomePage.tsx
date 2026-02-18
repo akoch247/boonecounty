@@ -547,7 +547,7 @@ export default function HomePage() {
                 <div className=" grid md:grid-cols-3 gap-10">
                   {[
                     { icon: Calendar, color: "blue", title: "When", details: ["3rd Wednesday", "January - November"] },
-                    { icon: MapPin, color: "red", title: "Where", details: ["Whitestown Municipal Complex", "6210 Veterans Dr, Whitestown, IN"] },
+                    { icon: MapPin, color: "red", title: "Where", details: ["Golf Club of Indiana", "6905 S 525 E, Whitestown, IN"] },
                     { icon: Clock, color: "blue", title: "Time", details: ["Doors open 6:30 PM", "Meeting 7:00 - 8:00 PM"] }
                   ].map((item, index) => (
                     <motion.div 
